@@ -82,6 +82,8 @@ Example 1:
 
 ```
 ./markdown_tool.py nc-1-zfs/article.md
+
+./markdown_tool.py nc-1-zfs/article.md -d $dt -p $dt -R
 ```
 
 Example 2:
