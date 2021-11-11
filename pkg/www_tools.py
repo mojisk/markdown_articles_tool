@@ -6,6 +6,7 @@ import requests
 from typing import Optional
 import re
 import os
+import hashlib
 from mimetypes import guess_extension
 from .string_tools import slugify
 
@@ -48,7 +49,8 @@ def get_filename_from_url(req: requests.Response) -> Optional[str]:
     """
 
     if req.url.find('/'):
-        result = req.url.rsplit('/', 1)[1]
+        #result = req.url.rsplit('/', 1)[1] #原始使用url最后一个路径作为图片名
+        result = hashlib.md5(req.content).hexdigest() #使用图片md5值作为图片名        
     else:
         cd = req.headers.get('content-disposition')
 
